@@ -34,3 +34,23 @@ background: lightgreen;
 
 }
 
+h1.text-center {
+    font-size: 3em; /* Large font size */
+    color: #333; /* Dark text color */
+    margin: 0;
+    padding: 20px; /* Padding around the text */
+    border-bottom: 3px solid #007BFF; /* Blue border at the bottom */
+    background: linear-gradient(90deg, #f3ec78, #af4261); /* Gradient background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+  }
+  
+  /* Optional: Additional styles for responsiveness */
+  @media (max-width: 768px) {
+    h1.text-center {
+      font-size: 2em; /* Smaller font size on smaller screens */
+      padding: 10px; /* Less padding on smaller screens */
+    }
+  }
+  
