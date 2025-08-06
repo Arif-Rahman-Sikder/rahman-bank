@@ -1,6 +1,6 @@
 ﻿# rahman-bank
 
-Rahman Bank
+
 Welcome to Rahman Bank, a beginner-friendly online banking application designed to help users manage their savings and expenditures. This project provides a simple yet functional interface to track deposits, withdrawals, and balances, complete with a transaction history visualization.
 Project Overview
 Rahman Bank is a web-based application that allows users to simulate basic banking operations. It features a login system, real-time balance updates, a transaction history log, and a dynamic chart to visualize financial activities. The app is built with a focus on simplicity and educational value for those learning web development.
@@ -54,3 +54,4 @@ Acknowledgments
 
 Inspired by the need for a simple banking simulation tool for learning purposes.
 Thanks to the open-source communities behind Tailwind CSS, Chart.js, and other dependencies.
+
