@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Reset login state on page load to ensure login page is shown
+    localStorage.removeItem('isLoggedIn');
+
     // Initialize from localStorage
     let balance = parseFloat(localStorage.getItem('balance')) || 1240;
     let deposits = parseFloat(localStorage.getItem('deposits')) || 0;
@@ -101,9 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Check login state
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-        loginArea.classList.add('hidden');
-        transactionArea.classList.remove('hidden');
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        loginArea.classList.remove('hidden');
+        transactionArea.classList.add('hidden');
     }
 
     // Deposit button event handler
