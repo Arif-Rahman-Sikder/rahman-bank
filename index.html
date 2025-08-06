@@ -5,112 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rahman Bank</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.1/dist/chartjs-adapter-moment.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-<body>
-  
-    <div id="login-area">
-        <h1 class="text-center">Welcome to The RAHMAN BANK</h1>
-    <div class="submit-area">
-        <h4>Login</h4>
-        <input type="text" class="form-control" placeholder="Email">
-        <br>
-        <input type="password" class="form-control" placeholder="Password">
-        <br>
-        <button id="login" class="btn btn-success">Enter</button>
-    </div>
-    </div>
-    <div id="transaction-area">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="deposit status">
-            <h5>Deposit</h5>
-            <h2>$ <span id="currentDeposit">00</span></h2>
-          </div>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+    <div id="login-area" class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Welcome to Rahman Bank</h1>
+        <div class="space-y-4">
+            <h4 class="text-lg font-semibold">Login</h4>
+            <input type="text" id="email" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Email">
+            <input type="password" id="password" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Password">
+            <button id="login" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition">Enter</button>
         </div>
-        <div class="col-md-4">
-          
-          <div class="withdraw status">
-            <h5>Withdraw</h5>
-          <h2>$ <span id="currentWithdraw">00</span></h2>
-          </div>
-        </div>
-        <div class="col-md-4 ">
-         <div class="balance status">
-          <h5>Balance</h5>
-          <h2>$ <span id="currentBalance">1240</span> </h2>
-         </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-         <div class="submit-area">
-          <h4>Deposit</h4>
-          <input id="depositAmount" type="text" class="form-control" placeholder="$ amount you want to deposit">
-          <br>
-          <button id="addDeposit" class="btn btn-success">Deposit</button></div>
-         </div>
-        <div class="col-md-6">
-         <div class="submit-area">
-          <h4>Withdraw</h4>
-          <input id="withdrawAmount" type="text" class="form-control" placeholder="$ amount you want to withdraw">
-          <br>
-          <button id="addWithdraw" class="btn btn-success">Withdraw</button></div>
-         </div>
-      </div>
-
-  
     </div>
-    <script>
-      //login button event handler
-      const loginBtn = document.getElementById("login");
-      loginBtn.addEventListener("click",function(){
-        const loginArea = document.getElementById("login-area");
-        loginArea.style.display = "none"   
-        const transactionArea = document.getElementById("transaction-area");
-        transactionArea.style.display = "block";
-       
-      })
-      //deposit button event handler
-      const depositBtn = document.getElementById("addDeposit");
-      depositBtn.addEventListener("click", function(){
-        const depositNumber = getInputNumber("depositAmount");
-
-        updateSpanText("currentDeposit", depositNumber);
-        updateSpanText("currentBalance", depositNumber);
-
-
-    document.getElementById("depositAmount").value = "";
-
-      })
-
-      //withdraw button event handler
-      const withdrawBtn = document.getElementById("addWithdraw");
-      withdrawBtn.addEventListener("click",function(){
-            const withdrawNumber = getInputNumber("withdrawAmount");
-    
-             updateSpanText("currentWithdraw", withdrawNumber);
-             updateSpanText("currentBalance",-1 * withdrawNumber);
-             document.getElementById("withdrawAmount").value ="";
-          
-      })
-
-      function getInputNumber(id){
-        const Amount = document.getElementById(id).value;
-        const amountNumber = parseFloat(Amount);
-        return amountNumber;
-      }
-
-      function updateSpanText(id, depositNumber){
-
-        const current = document.getElementById(id).innerText;
-      const currentNumber = parseFloat(current);
-      const totalAmount = depositNumber + currentNumber;
-      document.getElementById(id).innerText = totalAmount;
-
-      }
-    </script>
+    <div id="transaction-area" class="hidden w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 mt-6">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div class="bg-blue-500 text-white p-4 rounded-md text-center">
+                <h5 class="text-lg font-semibold">Deposit</h5>
+                <h2 class="text-2xl">$ <span id="currentDeposit">0</span></h2>
+            </div>
+            <div class="bg-green-500 text-white p-4 rounded-md text-center">
+                <h5 class="text-lg font-semibold">Withdraw</h5>
+                <h2 class="text-2xl">$ <span id="currentWithdraw">0</span></h2>
+            </div>
+            <div class="bg-teal-500 text-white p-4 rounded-md text-center">
+                <h5 class="text-lg font-semibold">Balance</h5>
+                <h2 class="text-2xl">$ <span id="currentBalance">1240</span></h2>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Deposit</h4>
+                <input id="depositAmount" type="number" min="0" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="$ amount to deposit">
+                <button id="addDeposit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition">Deposit</button>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Withdraw</h4>
+                <input id="withdrawAmount" type="number" min="0" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="$ amount to withdraw">
+                <button id="addWithdraw" class="w-full bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition">Withdraw</button>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <h4 class="text-lg font-semibold">Transaction History</h4>
+            <ul id="transactionHistory" class="space-y-2 max-h-40 overflow-y-auto"></ul>
+            <canvas id="transactionChart" class="w-full max-h-96"></canvas>
+            <button id="clearHistory" class="w-full bg-red-500 text-white p-2 rounded-md hover:bg-red-600 transition">Clear History</button>
+        </div>
+        <div id="errorMessage" class="hidden mt-4 p-2 bg-red-100 text-red-700 rounded-md"></div>
+    </div>
 </body>
 </html>

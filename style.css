@@ -1,56 +1,14 @@
-body {
-    padding : 100px;
+/* Custom styles to complement Tailwind */
+#transactionHistory::-webkit-scrollbar {
+    width: 8px;
 }
-.submit-area{
-   
-      margin-top:50px;
-      padding: 40px;
-      border-radius:10px;
-      box-shadow: 5px 5px;
-      box-shadow:5px 5px 10px grey ;
-
+#transactionHistory::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 4px;
 }
-
-#transaction-area{
-    display: none;
-
+#transactionHistory::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
 }
-.status{
-    margin: 0 20px;
-    color:white;
-    padding: 20px;
-    border-radius: 10px;
+#transactionChart {
+    max-height: 400px;
 }
-.deposit{
-    margin: 0 20px; 
-    background-color: slateblue;
-}
-.withdraw{
-background: lightgreen;
-
-}
-.balance{
- background-color: aquamarine;
-
-}
-
-h1.text-center {
-    font-size: 3em; /* Large font size */
-    color: #333; /* Dark text color */
-    margin: 0;
-    padding: 20px; /* Padding around the text */
-    border-bottom: 3px solid #007BFF; /* Blue border at the bottom */
-    background: linear-gradient(90deg, #f3ec78, #af4261); /* Gradient background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
-  }
-  
-  /* Optional: Additional styles for responsiveness */
-  @media (max-width: 768px) {
-    h1.text-center {
-      font-size: 2em; /* Smaller font size on smaller screens */
-      padding: 10px; /* Less padding on smaller screens */
-    }
-  }
-  
